@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <hr>
+
+    <pre>Expression: {{ expression }}</pre>
+    {# <pre>compiled: {{ compiled }}</pre> #}
+    <pre>Result: {{ result }}</pre>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="/js/rule-autocomplete.js"></script>
+{% endblock %}
