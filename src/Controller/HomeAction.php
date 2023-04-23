@@ -31,7 +31,7 @@ final class HomeAction extends AbstractController
         $data = [];
 
         $form = $this->createFormBuilder($data)
-            ->add('expression', TextType::class)
+            ->add('expression', TextType::class, ['required' => false])
             ->add('submit', SubmitType::class)
             ->getForm()
         ;
@@ -41,13 +41,13 @@ final class HomeAction extends AbstractController
             $data = $form->getData();
 
             $expression = $data['expression'];
-            // $compiled = $this->expressionLanguage->compile($expression, []);
-            $result = $this->expressionLanguage->evaluate($expression, [
-                'eleve' => $this->repository->getEleves()[1],
-            ]);
+            if (null !== $expression) {
+                // $compiled = $this->expressionLanguage->compile($expression, []);
+                $result = $this->expressionLanguage->evaluate($expression, [
+                    'eleve' => $this->repository->getEleves()[1],
+                ]);
+            }
         }
-
-        dump($result);
 
         return $this->render('home.html.twig', [
             'form' => $form->createView(),
@@ -56,48 +56,4 @@ final class HomeAction extends AbstractController
             'result' => $result,
         ]);
     }
-
-        // $ast = $this->expressionLanguage
-        //     ->parse('lowercase("azeAZE")', [])
-        //     ->getNodes()
-        // ;
-        // dump($ast);
-        //
-        // $foo = [
-        //     'bar' => 'BAZ',
-        // ];
-        //
-        // $expression = $this->expressionLanguage->parse('lowercase(foo["bar"])', ['foo']);
-        // $result = $this->expressionLanguage->evaluate($expression, ['foo' => $foo]);
-        // dump($result);
-        //
-        // $expression = new SerializedParsedExpression(
-        //     'lowercase("FOO")',
-        //     serialize($this->expressionLanguage->parse('lowercase("FOO")', [])->getNodes())
-        // );
-        // $result = $this->expressionLanguage->evaluate($expression);
-        // dump($result);
-        //
-        // $result = $this->expressionLanguage->compile('"A" ? "B" : "C"');
-        // dump($result);
-        
-        // $foo = [
-        //     'bar' => 'BAZ',
-        // ];
-        //
-        // $expression = $this->expressionLanguage->parse('lowercase(foo["bar"])', ['foo']);
-        // $result = $this->expressionLanguage->compile($expression, ['foo' => $foo]);
-
-
-        // $expresion = '((notes.semestres * 2 + notes.soutenance) / 3) < 10';
-        // $notes = [
-        //     'semestres' => 12,
-        //     'soutenance' => 9,
-        // ];
-        //
-        // $ast = (new ExpressionLanguage())
-        //     ->parse($expresion, ['notes'])
-        //     ->getNodes()
-        // ;
-
 }

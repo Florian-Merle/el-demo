@@ -18,5 +18,9 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
+    },
+    "dependencies": {
+        "codemirror": "^6.0.1",
+        "codemirror-lang-el": "github:Florian-Merle/lang-el"
     }
 }

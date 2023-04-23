@@ -2,14 +2,19 @@
 
 {% block body %}
     {{ form_start(form) }}
-        {{ form_widget(form) }}
+        {{ form_label(form.expression) }}
+        {{ form_errors(form) }}
+        {{ form_widget(form.expression) }}
+        <div id="editor" data-editor-configuration="{{ {
+            'formSelector' : "[name='#{form.vars.name}']",
+            'editorSourceSelector' : "##{form.expression.vars.id}",
+        } | json_encode() }}"></div>
+        {{ form_help(form) }}
+
+        {{ form_widget(form.submit) }}
     {{ form_end(form) }}
 
-    <hr>
-
-    <pre>Expression: {{ expression }}</pre>
-    {# <pre>compiled: {{ compiled }}</pre> #}
-    <pre>Result: {{ result }}</pre>
+    <pre>Result: {{ dump(result) }}</pre>
 {% endblock %}
 
 {% block javascripts %}
