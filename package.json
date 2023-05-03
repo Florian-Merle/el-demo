@@ -20,6 +20,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "bootstrap": "^5.3.0-alpha3",
         "codemirror": "^6.0.1",
         "codemirror-lang-el": "github:Florian-Merle/lang-el"
     }

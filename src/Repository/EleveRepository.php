@@ -7,7 +7,7 @@ namespace App\Repository;
 use App\Enum\Distance;
 use App\Model\Bourse;
 use App\Model\Eleve;
-use App\Model\Voeu;
+use App\Model\Voeux;
 
 final class EleveRepository
 {
@@ -18,21 +18,28 @@ final class EleveRepository
     {
         return [
             new Eleve(
-                'Florian Merle',
+                'Mathias Arlaud',
                 [],
                 [
-                    new Voeu('CPE', true, Distance::Proche),
+                    new Voeux('CPE', true, Distance::Proche),
                 ],
             ),
             new Eleve(
-                'John Doe',
+                'Florian Merle',
+                [],
+                [
+                    new Voeux('CPE', true, Distance::Proche),
+                ],
+            ),
+            new Eleve(
+                'Jane Doe',
                 [
                     new Bourse(2019, 1000),
                     new Bourse(2020, 1000),
                 ],
                 [
-                    new Voeu('INSA', false, Distance::Loin),
-                    new Voeu('CPE', true, Distance::Loin),
+                    new Voeux('INSA', false, Distance::Loin),
+                    new Voeux('CPE', true, Distance::Loin),
                 ],
             ),
         ];
@@ -41,5 +48,15 @@ final class EleveRepository
     public function isRegisterdAtParcoursup(Eleve $eleve): bool
     {
         return true;
+    }
+
+    public function aVerseUnBonPotDeVin(Eleve $eleve): bool
+    {
+        return in_array(
+            $eleve->nom,
+            [
+                'Mathias Arlaud',
+            ],
+        );
     }
 }

@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <h2>eligible_pour_bourse</h2>
+
     {{ form_start(form) }}
         {{ form_label(form.expression) }}
         {{ form_errors(form) }}
@@ -8,13 +10,12 @@
         <div id="editor" data-editor-configuration="{{ {
             'formSelector' : "[name='#{form.vars.name}']",
             'editorSourceSelector' : "##{form.expression.vars.id}",
-        } | json_encode() }}"></div>
+            'completionList' : completionList,
+        } | json_encode }}"></div>
         {{ form_help(form) }}
 
         {{ form_widget(form.submit) }}
     {{ form_end(form) }}
-
-    <pre>Result: {{ dump(result) }}</pre>
 {% endblock %}
 
 {% block javascripts %}

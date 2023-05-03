@@ -14,6 +14,7 @@ final class EleveExpressionLanguageProvider implements ExpressionFunctionProvide
         private readonly AEuUneBourseEn $aEuUneBourseEn,
         private readonly EstAccepteLoin $estAccepteLoin,
         private readonly EstInscritAParcoursup $estInscritAParcoursup,
+        private readonly AVerseUnBonPotDeVin $aVerseUnBonPotDeVin,
     ) {
     }
 
@@ -42,10 +43,17 @@ final class EleveExpressionLanguageProvider implements ExpressionFunctionProvide
             ),
 
             new ExpressionFunction(
-                'est_inscript_a_parcoursup',
+                'est_inscrit_a_parcoursup',
                 function ($str) {
                 },
                 $this->estInscritAParcoursup,
+            ),
+
+            new ExpressionFunction(
+                'a_verse_un_bon_pot_de_vin',
+                function ($str) {
+                },
+                $this->aVerseUnBonPotDeVin,
             ),
         ];
     }

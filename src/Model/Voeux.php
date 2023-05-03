@@ -6,7 +6,7 @@ namespace App\Model;
 
 use App\Enum\Distance;
 
-final class Voeu
+final class Voeux
 {
     public function __construct(
         public readonly string $libelle,
