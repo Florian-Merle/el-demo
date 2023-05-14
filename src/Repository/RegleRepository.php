@@ -22,6 +22,10 @@ final class RegleRepository
 
     public function findEligiblePourBourse(): string
     {
+        if (false === file_exists($this->eligiblePourBourseFile)) {
+            return '';
+        }
+
         return file_get_contents($this->eligiblePourBourseFile);
     }
 }
