@@ -7,7 +7,7 @@ namespace App\ExpressionLanguage;
 use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
-final class EcoleExpressionLanguage extends ExpressionLanguage
+final class ECommerceExpressionLanguage extends ExpressionLanguage
 {
     public function __construct(
         CacheItemPoolInterface $cache = null,

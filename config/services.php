@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use App\ExpressionLanguage\EcoleExpressionLanguage;
-use App\ExpressionLanguage\EcoleExpressionLanguageFactory;
-use App\Repository\RegleRepository;
+use App\ExpressionLanguage\ECommerceExpressionLanguage;
+use App\ExpressionLanguage\ECommerceExpressionLanguageFactory;
+use App\Repository\RuleRepository;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 use function Symfony\Component\DependencyInjection\Loader\Configurator\param;
@@ -28,11 +28,11 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         __DIR__.'/../src/Kernel.php',
     ]);
 
-    $services->set(RegleRepository::class)
+    $services->set(RuleRepository::class)
         ->arg('$projectDirectory', param('kernel.project_dir'));
 
-    $services->set(EcoleExpressionLanguageFactory::class);
+    $services->set(ECommerceExpressionLanguageFactory::class);
 
-    $services->set(EcoleExpressionLanguage::class)
-        ->factory([service(EcoleExpressionLanguageFactory::class), 'create']);
+    $services->set(ECommerceExpressionLanguage::class)
+        ->factory([service(ECommerceExpressionLanguageFactory::class), 'create']);
 };

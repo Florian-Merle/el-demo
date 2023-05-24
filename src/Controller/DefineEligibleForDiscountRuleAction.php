@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Factory\CompletionListFactory;
-use App\Repository\RegleRepository;
+use App\Repository\RuleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -14,33 +14,33 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class DefinirRegleEligiblePourBourseAction extends AbstractController
+final class DefineEligibleForDiscountRuleAction extends AbstractController
 {
     public function __construct(
-        private readonly RegleRepository $regles,
+        private readonly RuleRepository $ruleRepository,
         private readonly CompletionListFactory $completionListFactory,
     ) {
     }
     
-    #[Route('/definir_regle_eligible_pour_bourse', name: 'definir_regle_eligible_pour_bourse')]
+    #[Route('/define_eligible_for_discount_rule', name: 'define_eligible_for_discount_rule')]
     public function __invoke(
         Request $request,
     ): Response {
         $data = [
-            'expression' => $this->regles->findEligiblePourBourse(),
+            'expression' => $this->ruleRepository->findEligiblePourBourse(),
         ];
         $form = $this->createExpressionForm($data);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->regles->saveEligiblePourBourse($form->getData()['expression']);
+            $this->ruleRepository->saveEligiblePourBourse($form->getData()['expression']);
 
-            return $this->redirectToRoute('regles');
+            return $this->redirectToRoute('rules');
         }
 
-        return $this->render('definir_regle_eligible_pour_bourse.html.twig', [
+        return $this->render('define_eligible_for_discount_rule.html.twig', [
             'form' => $form->createView(),
-            'completionList' => $this->completionListFactory->create(['eleve']),
+            'completionList' => $this->completionListFactory->create(['customer']),
         ]);
     }
 

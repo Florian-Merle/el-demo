@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-final class Bourse
+use App\Enum\Distance;
+
+final class Address
 {
     public function __construct(
-        public readonly int $annee,
-        public readonly int $montant,
+        public readonly string $country,
     ) {
     }
 }

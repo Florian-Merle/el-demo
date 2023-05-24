@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-final class Eleve
+final class Customer
 {
     /**
-     * @param Bourse[] $bourses
-     * @param Voeux[] $voeux
+     * @param Order[] $orders
      */
     public function __construct(
         public readonly string $nom,
-        public readonly array $bourses,
-        public readonly array $voeux,
+        public readonly array $orders,
+        public readonly Address $billingAddress,
     ) {
     }
 }

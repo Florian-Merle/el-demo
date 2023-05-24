@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Factory;
 
-use App\ExpressionLanguage\FunctionProvider\EleveExpressionLanguageProvider;
+use App\ExpressionLanguage\FunctionProvider\ECommerceExpressionLanguageProvider;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 
 final class CompletionListFactory
 {
     public function __construct(
-        private readonly EleveExpressionLanguageProvider $expressionLanguageProvider,
+        private readonly ECommerceExpressionLanguageProvider $expressionLanguageProvider,
     ) {
     }
 

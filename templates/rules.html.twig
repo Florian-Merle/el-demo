@@ -1,22 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>Règles</h2>
+    <h2>Rules</h2>
 
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Règle</th>
+                <th scope="col">Rule</th>
                 <th scope="col">Expression</th>
                 <th scope="col">Actions</th>
             </tr>
       </thead>
       <tbody>
           <tr>
-             <th scope="row">eligible_pour_bourse</th>
-             <td scope="row">{{ regles.eligible_pour_bourse }}</td>
+             <th scope="row">eligible_for_discount</th>
+             <td scope="row">{{ rules.eligible_pour_bourse }}</td>
              <td scope="row">
-                  <a class="link-primary" href="{{ path('definir_regle_eligible_pour_bourse')}}" role="button">🖊 Editer</a>
+                  <a class="link-primary" href="{{ path('define_eligible_for_discount_rule')}}" role="button">🖊 Edit</a>
              </td>
           </tr>
       </tbody>
